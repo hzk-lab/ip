@@ -27,9 +27,9 @@ public class Donk {
                     System.out.println(index + ". " + list.get(i).toString());
                 }
             } else if (firstWord.equals("mark")) {
-                int taskIdx = scanner.nextInt() - 1;
 
                 try {
+                    int taskIdx = scanner.nextInt() - 1;
                     Task task = list.get(taskIdx);
                     task.markAsDone();
                     System.out.println("Nice! I've marked this task as done:\n" + "        " + task.toString());
@@ -135,6 +135,18 @@ public class Donk {
                 } catch (DonkException e) {
                     System.out.println(e.toString());
                 }
+            } else if (firstWord.equals("delete")) {
+
+                try {
+                    int taskIdx = scanner.nextInt() - 1;
+                    Task task = list.get(taskIdx);
+                    list.remove(taskIdx);
+                    System.out.println("Noted. I've removed this task:\n" + "        " + task.toString()
+                                        + "\n" + "Now you have " + list.size() + " tasks in the list.");
+                } catch (IndexOutOfBoundsException e) {
+                    System.out.println("Oops!!! The task you just type in to delete doesn't exist.");
+                }
+
             } else {
                 System.out.println("Oops!!! You must declare the type of the task.");
                 scanner.nextLine();
