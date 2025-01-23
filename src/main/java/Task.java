@@ -15,11 +15,17 @@ public class Task {
         return this.status;
     }
 
-    public void markAsDone() {
+    public void markAsDone() throws DonkException{
+        if (this.status) {
+            throw new DonkException("Oops!!! This task has already been done by you.");
+        }
         this.status = true;
     }
 
-    public void markAsUndone() {
+    public void markAsUndone() throws DonkException{
+        if (!this.status) {
+            throw new DonkException("Oops!!! This task has not been done before.");
+        }
         this.status = false;
     }
 
