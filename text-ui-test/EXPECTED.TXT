@@ -28,6 +28,9 @@ Got it. I've added this task:
 Now you have 3 tasks in the list.
 
 Enter your message:
+Oops!!! You must declare the type of the task.
+
+Enter your message:
 Nice! I've marked this task as done:
         [D][X] return book (by: Sunday)
 

@@ -16,6 +16,7 @@ public class Donk {
         while (true) {
             System.out.println("\nEnter your message:");
             String firstWord = scanner.next();
+
             if (firstWord.equals("bye")) {
                 System.out.println("Bye. Hope to see you again soon!");
                 break;
@@ -136,6 +137,7 @@ public class Donk {
                 }
             } else {
                 System.out.println("Oops!!! You must declare the type of the task.");
+                scanner.nextLine();
             }
         }
 

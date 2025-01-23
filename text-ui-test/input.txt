@@ -3,6 +3,7 @@ deadline return book /by Sunday
 mark 1
 list
 event project meeting /from Mon 2pm /to 4pm
+complete CS2103T independent project
 mark 2
 list
 unmark 2
