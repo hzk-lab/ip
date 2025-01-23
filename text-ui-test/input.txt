@@ -7,4 +7,6 @@ complete CS2103T independent project
 mark 2
 list
 unmark 2
+unmark 2
+delete 3
 bye
