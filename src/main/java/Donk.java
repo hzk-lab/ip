@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Donk {
     public static void main(String[] args) {
@@ -10,6 +12,8 @@ public class Donk {
                 + "____________________________________________________________\n";
         System.out.println("Hello from\n" + logo);
 
+        List<String> list = new ArrayList<>();
+
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -19,8 +23,13 @@ public class Donk {
             if (userInput.equals("bye")) {
                 System.out.println("Bye. Hope to see you again soon!");
                 break;
+            } else if (userInput.equals("list")) {
+                for (int i = 0; i < list.size(); i++) {
+                    int index = i + 1;
+                    System.out.println(index + ". " + list.get(i));
+                }
             } else {
-                System.out.println(userInput);
+                list.add(userInput);
             }
         }
     }
