@@ -1,4 +1,4 @@
-public class Task {
+public abstract class Task {
     private String name;
     private boolean status;
 
@@ -15,14 +15,14 @@ public class Task {
         return this.status;
     }
 
-    public void markAsDone() throws DonkException{
+    public void markAsDone() throws DonkException {
         if (this.status) {
             throw new DonkException("Oops!!! This task has already been done by you.");
         }
         this.status = true;
     }
 
-    public void markAsUndone() throws DonkException{
+    public void markAsUndone() throws DonkException {
         if (!this.status) {
             throw new DonkException("Oops!!! This task has not been done before.");
         }
@@ -37,4 +37,10 @@ public class Task {
             return "[ ] " + this.name;
         }
     }
+
+
+    public abstract String toFileString();
+
+
+
 }

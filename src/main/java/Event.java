@@ -3,8 +3,8 @@ public class Event extends Task{
     protected String start;
     protected String end;
 
-    public Event(String name, String start, String end) throws DonkException {
-        super(name, false);
+    public Event(String name, String start, String end, boolean status) throws DonkException {
+        super(name, status);
         this.start = start;
         this.end = end;
 
@@ -22,4 +22,8 @@ public class Event extends Task{
         return "[E]" + super.toString() + " (from: " + start + " to: " + end + ")";
     }
 
+    @Override
+    public String toFileString() {
+        return "E | " + (getStatus() ? "1" : "0") + " | " + getName();
+    }
 }
