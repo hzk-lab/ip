@@ -24,6 +24,6 @@ public class Event extends Task{
 
     @Override
     public String toFileString() {
-        return "E | " + (getStatus() ? "1" : "0") + " | " + getName();
+        return "E | " + (getStatus() ? "1" : "0") + " | " + getName() + " | " + start + " | " + end;
     }
 }
