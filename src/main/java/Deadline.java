@@ -18,6 +18,6 @@ public class Deadline extends Task{
 
     @Override
     public String toFileString() {
-        return "D | " + (getStatus() ? "1" : "0") + " | " + getName();
+        return "D | " + (getStatus() ? "1" : "0") + " | " + getName() + " | " + this.by;
     }
 }
