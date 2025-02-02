@@ -9,7 +9,7 @@ public class Donk {
                 + "What can I do for you?\n";
         System.out.println(logo);
 
-        List<Task> list = new ArrayList<>();
+        List<Task> list = Storage.loadTasks();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -33,6 +33,7 @@ public class Donk {
                     Task task = list.get(taskIdx);
                     task.markAsDone();
                     System.out.println("Nice! I've marked this task as done:\n" + "        " + task.toString());
+                    Storage.saveTasks(list);
                 } catch (IndexOutOfBoundsException e) {
                     System.out.println("Oops!!! The task you just type in to mark as done doesn't exist.");
                 } catch (DonkException e) {
@@ -46,6 +47,7 @@ public class Donk {
                     Task task = list.get(taskIdx);
                     task.markAsUndone();
                     System.out.println("OK, I've marked this task as not done yet:\n" + "        " + task.toString());
+                    Storage.saveTasks(list);
                 } catch (IndexOutOfBoundsException e) {
                     System.out.println("Oops!!! The task you just type in to mark as undone doesn't exist.");
                 } catch (DonkException e) {
@@ -57,11 +59,12 @@ public class Donk {
 
                 try {
                     String name = scanner.nextLine().trim();
-                    ToDo task = new ToDo(name);
+                    ToDo task = new ToDo(name, false);
                     list.add(task);
                     System.out.println("Got it. I've added this task:\n" + "        "
                             + task.toString() + "\n"
                             + "Now you have " + list.size() + " tasks in the list.");
+                    Storage.saveTasks(list);
                 } catch (DonkException e) {
                     System.out.println(e.toString());
                 }
@@ -90,11 +93,12 @@ public class Donk {
                 String date = afterSlash.toString().trim();
 
                 try {
-                    Deadline task = new Deadline(name, date);
+                    Deadline task = new Deadline(name, date, false);
                     list.add(task);
                     System.out.println("Got it. I've added this task:\n" + "        "
                             + task.toString() + "\n"
                             + "Now you have " + list.size() + " tasks in the list.");
+                    Storage.saveTasks(list);
                 } catch (DonkException e) {
                     System.out.println(e.toString());
                 }
@@ -127,11 +131,12 @@ public class Donk {
                 String end = afterSecondSlash.toString().trim();
 
                 try {
-                    Event task = new Event(name, start, end);
+                    Event task = new Event(name, start, end, false);
                     list.add(task);
                     System.out.println("Got it. I've added this task:\n" + "        "
                             + task.toString() + "\n"
                             + "Now you have " + list.size() + " tasks in the list.");
+                    Storage.saveTasks(list);
                 } catch (DonkException e) {
                     System.out.println(e.toString());
                 }
@@ -143,6 +148,7 @@ public class Donk {
                     list.remove(taskIdx);
                     System.out.println("Noted. I've removed this task:\n" + "        " + task.toString()
                                         + "\n" + "Now you have " + list.size() + " tasks in the list.");
+                    Storage.saveTasks(list);
                 } catch (IndexOutOfBoundsException e) {
                     System.out.println("Oops!!! The task you just type in to delete doesn't exist.");
                 }
