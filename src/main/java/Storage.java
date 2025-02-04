@@ -54,7 +54,7 @@ public class Storage {
         try {
             String[] parts = line.split(" \\| ");
             if (parts.length < 3) return null; // Ensure correct format
-
+            // System.out.println("x");
             String type = parts[0].trim();
             boolean isDone = parts[1].trim().equals("1");
             String name = parts[2].trim();
@@ -67,9 +67,12 @@ public class Storage {
                 case "E":
                     return new Event(name, parts[3].trim(), parts[4].trim(), isDone);
                 default:
+                    System.out.println("y");
                     return null;
             }
         } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("z");
             return null; // Return null to indicate a corrupted line
         }
     }

@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
-public class Event extends Task{
+public class Event extends Task {
     protected String start;
     protected String end;
 
@@ -21,11 +21,12 @@ public class Event extends Task{
         if (end == null || end.trim().isEmpty())
             throw new DonkException("Oops!!! Your Event task must have a end time.");
 
-        LocalDate d1 = LocalDate.parse(start);
-        LocalDate d2 = LocalDate.parse(end);
+        if (parseDate.judgeStartAndEnd(start, end)) {
+            throw new DonkException("Oops!!! Your event end time is earlier than its start time.");
+        }
 
-        processedStart = d1.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
-        processedEnd = d1.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
+        processedStart = parseDate.parseDateOrReturnOriginal(start);
+        processedEnd = parseDate.parseDateOrReturnOriginal(end);
     }
 
     @Override
@@ -38,6 +39,6 @@ public class Event extends Task{
 
     @Override
     public String toFileString() {
-        return "E | " + (getStatus() ? "1" : "0") + " | " + getName() + " | " + start + " | " + end;
+        return "E | " + (getStatus() ? "1" : "0") + " | " + getName() + " | " + processedStart + " | " + processedEnd;
     }
 }
