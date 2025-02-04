@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Storage {
-    private static final String FILE_PATH = "./data/donk.txt";
+    private String filePath;
+
+    public Storage(String file_path) {
+        this.filePath = file_path;
+    }
 
     // Load tasks from file (handling corruption)
-    public static List<Task> loadTasks() {
+    public List<Task> loadTasks() {
         List<Task> tasks = new ArrayList<>();
-        File file = new File(FILE_PATH);
+        File file = new File(this.filePath);
 
         if (!file.exists()) {
             System.out.println("No previous tasks found. Creating a new task list.");
@@ -36,8 +40,8 @@ public class Storage {
     }
 
     // Save tasks to file
-    public static void saveTasks(List<Task> tasks) {
-        File file = new File(FILE_PATH);
+    public void saveTasks(List<Task> tasks) {
+        File file = new File(filePath);
         file.getParentFile().mkdirs(); // Ensure directory exists
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
@@ -51,7 +55,7 @@ public class Storage {
     }
 
     // Parses a task from a stored line in the file
-    private static Task parseTask(String line) {
+    private Task parseTask(String line) {
         try {
             String[] parts = line.split(" \\| ");
             if (parts.length < 3) return null; // Ensure correct format
@@ -79,7 +83,7 @@ public class Storage {
     }
 
     // Handle corrupted file by renaming it and starting fresh
-    private static void handleCorruptedFile(File corruptedFile) {
+    private void handleCorruptedFile(File corruptedFile) {
         File backupFile = new File("./ip/data/donk_corrupted.txt");
 
         if (corruptedFile.renameTo(backupFile)) {

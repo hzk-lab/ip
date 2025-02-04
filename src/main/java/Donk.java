@@ -5,6 +5,50 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
 public class Donk {
+
+    private Storage storage;
+    private TaskList tasks;
+    private Ui ui;
+
+    public Donk(String filePath) {
+        ui = new Ui();
+        storage = new Storage(filePath);
+        TaskList tempTasks;
+/*
+        try {
+            tempTasks = new TaskList(storage.loadTasks());
+        } catch (DonkException e) {
+            ui.showLoadingError();
+            tempTasks = new TaskList();
+        }
+
+ */
+        tempTasks = new TaskList(storage.loadTasks());
+        this.tasks = tempTasks;
+    }
+
+    public void run() {
+        ui.showWelcome();
+        while (true) {
+            try {
+                String input = ui.readCommand();
+                Command command = Parser.parseCommand(input);
+                command.execute(tasks, ui, storage);
+                if (command.isExit()) {
+                    break;
+                }
+            } catch (DonkException e) {
+                ui.showMessage(e.getMessage());
+            }
+        }
+        ui.close();
+    }
+
+    public static void main(String[] args) {
+        new Donk("./data/donk.txt").run();
+    }
+
+    /*
     public static void main(String[] args) {
         String logo = "____________________________________________________________\n"
                 + "Hello! I'm Donk\n"
@@ -198,5 +242,7 @@ public class Donk {
         }
         return matchingTasks;
     }
+
+     */
 
 }
