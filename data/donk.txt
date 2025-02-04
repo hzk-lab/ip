@@ -1,2 +1,3 @@
-T | 0 | wee
-D | 0 | t
+D | 0 | do | 2pm
+D | 0 | do | Oct 10 2020
+E | 0 | do from | Oct 10 2020 | Oct 10 2021

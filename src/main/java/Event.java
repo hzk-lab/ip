@@ -1,7 +1,13 @@
-public class Event extends Task{
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
+public class Event extends Task {
     protected String start;
     protected String end;
+
+    private String processedStart;
+    private String processedEnd;
 
     public Event(String name, String start, String end, boolean status) throws DonkException {
         super(name, status);
@@ -15,16 +21,25 @@ public class Event extends Task{
         if (end == null || end.trim().isEmpty())
             throw new DonkException("Oops!!! Your Event task must have a end time.");
 
+        if (parseDate.judgeStartAndEnd(start, end)) {
+            throw new DonkException("Oops!!! Your event end time is earlier than its start time.");
+        }
+
+        processedStart = parseDate.parseDateOrReturnOriginal(start);
+        processedEnd = parseDate.parseDateOrReturnOriginal(end);
     }
 
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (from: " + start + " to: " + end + ")";
+        LocalDate d1 = LocalDate.parse(start);
+        LocalDate d2 = LocalDate.parse(end);
+
+        return "[E]" + super.toString() + " (from: " + processedStart + " to: " + processedEnd + ")";
     }
 
     @Override
     public String toFileString() {
-        return "E | " + (getStatus() ? "1" : "0") + " | " + getName() + " | " + start + " | " + end;
+        return "E | " + (getStatus() ? "1" : "0") + " | " + getName() + " | " + processedStart + " | " + processedEnd;
     }
 
 }
