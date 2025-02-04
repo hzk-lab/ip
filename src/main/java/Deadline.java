@@ -25,12 +25,9 @@ public class Deadline extends Task {
 
     @Override
     public String toFileString() {
-        return "D | " + (getStatus() ? "1" : "0") + " | " + getName() + " | " + this.processedBy;
+        return "D | " + (getStatus() ? "1" : "0") + " | " + getName() + " | " + this.by;
     }
 
-    public String getBy() {
-        return this.by;
-    }
 
 
 }
