@@ -62,7 +62,6 @@ public class TaskList {
     }
 
 
-
     public void printTasks() {
         if (tasks.isEmpty()) {
             System.out.println("Your task list is empty!");
