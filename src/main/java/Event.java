@@ -21,7 +21,7 @@ public class Event extends Task {
         if (end == null || end.trim().isEmpty())
             throw new DonkException("Oops!!! Your Event task must have a end time.");
 
-        if (parseDate.judgeStartAndEnd(start, end)) {
+        if (!parseDate.judgeStartAndEnd(start, end)) {
             throw new DonkException("Oops!!! Your event end time is earlier than its start time.");
         }
 
@@ -39,7 +39,7 @@ public class Event extends Task {
 
     @Override
     public String toFileString() {
-        return "E | " + (getStatus() ? "1" : "0") + " | " + getName() + " | " + processedStart + " | " + processedEnd;
+        return "E | " + (getStatus() ? "1" : "0") + " | " + getName() + " | " + start + " | " + end;
     }
 
 }
