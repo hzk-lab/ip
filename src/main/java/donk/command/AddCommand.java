@@ -1,3 +1,8 @@
+package donk.command;
+
+import donk.*;
+import donk.task.Task;
+
 public class AddCommand extends Command {
     private final Task task;
 

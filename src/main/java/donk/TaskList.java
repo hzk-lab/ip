@@ -1,3 +1,9 @@
+package donk;
+
+import donk.task.Deadline;
+import donk.task.Event;
+import donk.task.Task;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
@@ -93,9 +99,9 @@ public class TaskList {
         List<Task> matchingTasks = new ArrayList<>();
         for (Task task : tasks) {
             try {
-                if (task instanceof Deadline && (LocalDate.parse(((Deadline) task).by).equals(date))) {
+                if (task instanceof Deadline && (LocalDate.parse(((Deadline) task).getBy()).equals(date))) {
                     matchingTasks.add(task);
-                } else if (task instanceof Event && ((LocalDate.parse(((Event) task).start).equals(date)) || (LocalDate.parse(((Event) task).end).equals(date)))) {
+                } else if (task instanceof Event && ((LocalDate.parse(((Event) task).getStart()).equals(date)) || (LocalDate.parse(((Event) task).getEnd()).equals(date)))) {
                     matchingTasks.add(task);
                 }
             } catch (DateTimeParseException e) {

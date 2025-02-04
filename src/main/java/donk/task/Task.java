@@ -1,3 +1,7 @@
+package donk.task;
+
+import donk.DonkException;
+
 public abstract class Task {
     private String name;
     private boolean status;

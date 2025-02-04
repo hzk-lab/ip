@@ -1,10 +1,13 @@
+package donk.task;
+
+import donk.DonkException;
+import donk.parseDate;
+
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 
 public class Event extends Task {
-    protected String start;
-    protected String end;
+    private String start;
+    private String end;
 
     private String processedStart;
     private String processedEnd;
@@ -40,6 +43,14 @@ public class Event extends Task {
     @Override
     public String toFileString() {
         return "E | " + (getStatus() ? "1" : "0") + " | " + getName() + " | " + start + " | " + end;
+    }
+
+    public String getStart() {
+        return this.start;
+    }
+
+    public String getEnd() {
+        return this.end;
     }
 
 }

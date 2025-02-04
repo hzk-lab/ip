@@ -1,3 +1,11 @@
+package donk;
+
+import donk.command.*;
+import donk.task.Deadline;
+import donk.task.Event;
+import donk.task.Task;
+import donk.task.ToDo;
+
 public class Parser {
     public static Command parseCommand(String input) throws DonkException {
         String[] words = input.split(" ", 2);

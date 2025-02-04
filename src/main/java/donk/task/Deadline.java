@@ -1,6 +1,7 @@
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
+package donk.task;
+
+import donk.DonkException;
+import donk.parseDate;
 
 public class Deadline extends Task {
 
@@ -28,6 +29,9 @@ public class Deadline extends Task {
         return "D | " + (getStatus() ? "1" : "0") + " | " + getName() + " | " + this.by;
     }
 
+    public String getBy() {
+        return this.by;
+    }
 
 
 }

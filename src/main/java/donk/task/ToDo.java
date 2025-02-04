@@ -1,4 +1,9 @@
-public class ToDo extends Task{
+package donk.task;
+
+import donk.DonkException;
+import donk.task.Task;
+
+public class ToDo extends Task {
 
     public ToDo(String name, boolean status) throws DonkException {
         super(name, status);
