@@ -20,4 +20,10 @@ public class Deadline extends Task{
     public String toFileString() {
         return "D | " + (getStatus() ? "1" : "0") + " | " + getName() + " | " + by;
     }
+
+    public String getBy() {
+        return this.by;
+    }
+
+
 }

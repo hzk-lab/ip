@@ -1,6 +1,8 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 
 public class Donk {
     public static void main(String[] args) {
@@ -153,6 +155,24 @@ public class Donk {
                     System.out.println("Oops!!! The task you just type in to delete doesn't exist.");
                 }
 
+            } else if (firstWord.equals("find")) {
+
+                String dateString = scanner.next();
+                try {
+                    LocalDate searchDate = LocalDate.parse(dateString);
+                    List<Task> results = findTasksByDate(list, searchDate);
+                    if (results.isEmpty()) {
+                        System.out.println("No tasks found on " + searchDate);
+                    } else {
+                        System.out.println("Here are the tasks on " + searchDate + ":");
+                        for (int i = 0; i < results.size(); i++) {
+                            System.out.println((i + 1) + ". " + results.get(i));
+                        }
+                    }
+                } catch (DateTimeParseException e) {
+                    System.out.println("Oops!!! Invalid date format! Use YYYY-MM-DD.");
+                }
+
             } else {
                 System.out.println("Oops!!! You must declare the type of the task.");
                 scanner.nextLine();
@@ -161,6 +181,22 @@ public class Donk {
 
         scanner.close();
 
+    }
+
+    public static List<Task> findTasksByDate(List<Task> tasks, LocalDate date) {
+        List<Task> matchingTasks = new ArrayList<>();
+        for (Task task : tasks) {
+            try {
+                if (task instanceof Deadline && (LocalDate.parse(((Deadline) task).by).equals(date))) {
+                    matchingTasks.add(task);
+                } else if (task instanceof Event && ((LocalDate.parse(((Event) task).start).equals(date)) || (LocalDate.parse(((Event) task).end).equals(date)))) {
+                    matchingTasks.add(task);
+                }
+            } catch (DateTimeParseException e) {
+                continue;
+            }
+        }
+        return matchingTasks;
     }
 
 }

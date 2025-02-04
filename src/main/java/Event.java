@@ -26,4 +26,5 @@ public class Event extends Task{
     public String toFileString() {
         return "E | " + (getStatus() ? "1" : "0") + " | " + getName() + " | " + start + " | " + end;
     }
+
 }
