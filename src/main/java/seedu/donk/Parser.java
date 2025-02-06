@@ -66,8 +66,16 @@ public class Parser {
                     throw new DonkException("Invalid Event format! Use: event <task> /from <start> /to <end>");
                 }
                 return new AddCommand(new Event(eventParts[0], eventParts[1], eventParts[2], false));
+            case "get":
+                if (words.length < 2) {
+                    throw new DonkException("Invalid Get format! You must type in the date of the task.");
+                }
+                return new FindDateCommand(words[1]);
             case "find":
-                return new FindCommand(words[1]);
+                if (words.length < 2) {
+                    throw new DonkException("Invalid Find format! You must type in the name of the task.");
+                }
+                return new FindNameCommand(words[1]);
             default:
                 return new InvalidCommand();
         }

@@ -5,15 +5,13 @@ import seedu.donk.Storage;
 import seedu.donk.TaskList;
 import seedu.donk.Ui;
 
-public class FindCommand extends Command {
-    private String dateString;
+public abstract class FindCommand extends Command {
+    protected String searchString;
 
-    public FindCommand(String dateString) {
-        this.dateString = dateString;
+    public FindCommand(String searchString) {
+        this.searchString = searchString;
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws DonkException {
-        tasks.findTasks(dateString);
-    }
+    public abstract void execute(TaskList tasks, Ui ui, Storage storage) throws DonkException;
 }

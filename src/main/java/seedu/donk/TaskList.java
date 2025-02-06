@@ -117,12 +117,15 @@ public class TaskList {
         return tasks;
     }
 
+
+
     /**
      * Finds tasks occurring on a specific date and prints them.
      *
      * @param dateString The date string in {@code YYYY-MM-DD} format.
      */
-    public void findTasks(String dateString) {
+
+    public void findDateTasks(String dateString) throws DonkException{
         try {
             LocalDate searchDate = LocalDate.parse(dateString);
             List<Task> results = findTasksByDate(tasks, searchDate);
@@ -130,6 +133,28 @@ public class TaskList {
                 System.out.println("No tasks found on " + searchDate);
             } else {
                 System.out.println("Here are the tasks on " + searchDate + ":");
+                for (int i = 0; i < results.size(); i++) {
+                    System.out.println((i + 1) + ". " + results.get(i));
+                }
+            }
+        } catch (DateTimeParseException e) {
+            throw new DonkException("Oops!!! Invalid date format! Use YYYY-MM-DD.");
+        }
+    }
+
+
+    /**
+     * Finds tasks occurring on a specific date and prints them.
+     *
+     * @param nameString The name String to search with.
+     */
+    public void findNameTasks(String nameString) {
+        try {
+            List<Task> results = findTasksByName(tasks, nameString);
+            if (results.isEmpty()) {
+                System.out.println("No tasks found with the word " + nameString);
+            } else {
+                System.out.println("Here are the tasks containing " + nameString + ":");
                 for (int i = 0; i < results.size(); i++) {
                     System.out.println((i + 1) + ". " + results.get(i));
                 }
@@ -159,6 +184,26 @@ public class TaskList {
                 continue;
             }
         }
+        return matchingTasks;
+    }
+
+
+    /**
+     * Finds and returns a list of tasks that match the given name.
+     *
+     * @param tasks The list of tasks to search.
+     * @param nameString The name to match against.
+     * @return A list of tasks with the given name.
+     */
+    public static List<Task> findTasksByName(List<Task> tasks, String nameString) {
+        List<Task> matchingTasks = new ArrayList<>();
+
+        for (Task task : tasks) {
+            if (task.getName().toLowerCase().contains(nameString.toLowerCase())) {
+                matchingTasks.add(task);
+            }
+        }
+
         return matchingTasks;
     }
 
