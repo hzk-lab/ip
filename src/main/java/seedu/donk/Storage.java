@@ -9,14 +9,29 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The {@code Storage} class is responsible for handling file operations related to saving and loading tasks.
+ * It ensures that tasks persist across application runs by storing them in a file.
+ */
 public class Storage {
     private String filePath;
 
+    /**
+     * Constructs a {@code Storage} instance with a specified file path.
+     *
+     * @param file_path The file path where tasks are stored.
+     */
     public Storage(String file_path) {
         this.filePath = file_path;
     }
 
-    // Load tasks from file (handling corruption)
+    /**
+     * Loads tasks from the specified file.
+     * If the file does not exist, a new task list is created.
+     * If the file is corrupted, it is renamed, and an empty task list is returned.
+     *
+     * @return A list of {@code Task} objects loaded from the file.
+     */
     public List<Task> loadTasks() {
         List<Task> tasks = new ArrayList<>();
         File file = new File(this.filePath);
@@ -45,7 +60,12 @@ public class Storage {
         return tasks;
     }
 
-    // Save tasks to file
+    /**
+     * Saves the given list of tasks to the file.
+     * Ensures that the directory structure exists before writing.
+     *
+     * @param tasks The list of tasks to be saved.
+     */
     public void saveTasks(List<Task> tasks) {
         File file = new File(filePath);
         file.getParentFile().mkdirs(); // Ensure directory exists
@@ -60,7 +80,12 @@ public class Storage {
         }
     }
 
-    // Parses a task from a stored line in the file
+    /**
+     * Parses a task from a stored line in the file.
+     *
+     * @param line The task entry in the file.
+     * @return The corresponding {@code Task} object, or {@code null} if the line is corrupted.
+     */
     private Task parseTask(String line) {
         try {
             String[] parts = line.split(" \\| ");
@@ -88,7 +113,12 @@ public class Storage {
         }
     }
 
-    // Handle corrupted file by renaming it and starting fresh
+    /**
+     * Handles a corrupted file by renaming it and starting fresh.
+     * The corrupted file is renamed to {@code donk_corrupted.txt}.
+     *
+     * @param corruptedFile The corrupted file to be renamed.
+     */
     private void handleCorruptedFile(File corruptedFile) {
         File backupFile = new File("./ip/data/donk_corrupted.txt");
 

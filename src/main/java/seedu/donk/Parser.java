@@ -6,7 +6,18 @@ import seedu.donk.task.Event;
 import seedu.donk.task.Task;
 import seedu.donk.task.ToDo;
 
+/**
+ * The {@code Parser} class is responsible for interpreting user input
+ * and converting it into executable commands for the Donk chatbot.
+ */
 public class Parser {
+    /**
+     * Parses a given user input and returns the corresponding {@code Command}.
+     *
+     * @param input The user input string.
+     * @return The parsed {@code Command} object.
+     * @throws DonkException If the input format is invalid.
+     */
     public static Command parseCommand(String input) throws DonkException {
         String[] words = input.split(" ", 2);
         String command = words[0].toLowerCase();
@@ -62,6 +73,13 @@ public class Parser {
         }
     }
 
+    /**
+     * Parses a stored task entry from a file into a {@code Task} object.
+     *
+     * @param line The task entry in the stored file.
+     * @return The corresponding {@code Task} object.
+     * @throws DonkException If the format of the task entry is invalid.
+     */
     public static Task parseTask(String line) throws DonkException{
         String[] parts = line.split(" \\| ");
         String type = parts[0];
