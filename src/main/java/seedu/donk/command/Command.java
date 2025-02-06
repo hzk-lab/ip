@@ -1,9 +1,9 @@
-package donk.command;
+package seedu.donk.command;
 
-import donk.DonkException;
-import donk.Storage;
-import donk.TaskList;
-import donk.Ui;
+import seedu.donk.DonkException;
+import seedu.donk.Storage;
+import seedu.donk.TaskList;
+import seedu.donk.Ui;
 
 public abstract class Command {
     public abstract void execute(TaskList tasks, Ui ui, Storage storage) throws DonkException;

@@ -1,7 +1,10 @@
-package donk.command;
+package seedu.donk.command;
 
-import donk.*;
-import donk.task.Task;
+import seedu.donk.DonkException;
+import seedu.donk.task.Task;
+import seedu.donk.Storage;
+import seedu.donk.TaskList;
+import seedu.donk.Ui;
 
 public class AddCommand extends Command {
     private final Task task;

@@ -1,4 +1,4 @@
-package donk;
+package seedu.donk;
 
 import java.util.Scanner;
 

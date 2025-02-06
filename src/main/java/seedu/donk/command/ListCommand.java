@@ -1,9 +1,8 @@
-package donk.command;
+package seedu.donk.command;
 
-import donk.Storage;
-import donk.TaskList;
-import donk.Ui;
-import donk.command.Command;
+import seedu.donk.Storage;
+import seedu.donk.TaskList;
+import seedu.donk.Ui;
 
 public class ListCommand extends Command {
     @Override

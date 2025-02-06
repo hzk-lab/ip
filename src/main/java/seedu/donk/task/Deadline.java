@@ -1,7 +1,7 @@
-package donk.task;
+package seedu.donk.task;
 
-import donk.DonkException;
-import donk.parseDate;
+import seedu.donk.DonkException;
+import seedu.donk.parseDate;
 
 public class Deadline extends Task {
 

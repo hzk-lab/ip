@@ -1,10 +1,9 @@
-package donk.command;
+package seedu.donk.command;
 
-import donk.DonkException;
-import donk.Storage;
-import donk.TaskList;
-import donk.Ui;
-import donk.command.Command;
+import seedu.donk.DonkException;
+import seedu.donk.Storage;
+import seedu.donk.TaskList;
+import seedu.donk.Ui;
 
 public class MarkCommand extends Command {
     private final int taskIndex;

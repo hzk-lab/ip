@@ -1,8 +1,8 @@
-package donk;
+package seedu.donk;
 
-import donk.task.Deadline;
-import donk.task.Event;
-import donk.task.Task;
+import seedu.donk.task.Deadline;
+import seedu.donk.task.Event;
+import seedu.donk.task.Task;
 
 import java.util.ArrayList;
 import java.util.List;

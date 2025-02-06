@@ -1,6 +1,6 @@
-package donk;
+package seedu.donk;
 
-import donk.command.Command;
+import seedu.donk.command.Command;
 
 public class Donk {
 

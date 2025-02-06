@@ -1,7 +1,6 @@
-package donk.task;
+package seedu.donk.task;
 
-import donk.DonkException;
-import donk.task.Task;
+import seedu.donk.DonkException;
 
 public class ToDo extends Task {
 

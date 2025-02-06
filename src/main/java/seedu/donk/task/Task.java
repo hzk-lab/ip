@@ -1,6 +1,6 @@
-package donk.task;
+package seedu.donk.task;
 
-import donk.DonkException;
+import seedu.donk.DonkException;
 
 public abstract class Task {
     private String name;

@@ -1,10 +1,10 @@
-package donk;
+package seedu.donk;
 
-import donk.command.*;
-import donk.task.Deadline;
-import donk.task.Event;
-import donk.task.Task;
-import donk.task.ToDo;
+import seedu.donk.command.*;
+import seedu.donk.task.Deadline;
+import seedu.donk.task.Event;
+import seedu.donk.task.Task;
+import seedu.donk.task.ToDo;
 
 public class Parser {
     public static Command parseCommand(String input) throws DonkException {
@@ -39,17 +39,20 @@ public class Parser {
                             + ". Please enter a valid number to delete.");
                 }
             case "todo":
+                if (words.length < 2) {
+                    throw new DonkException("Invalid Todo format! You must type in the description.");
+                }
                 return new AddCommand(new ToDo(words[1], false));
             case "deadline":
                 String[] deadlineParts = words[1].split(" /by ");
                 if (deadlineParts.length < 2) {
-                    throw new DonkException("Invalid deadline format! Use: deadline <task> /by <date>");
+                    throw new DonkException("Invalid Deadline format! Use: deadline <task> /by <date>");
                 }
                 return new AddCommand(new Deadline(deadlineParts[0], deadlineParts[1], false));
             case "event":
                 String[] eventParts = words[1].split(" /from | /to ");
                 if (eventParts.length < 3) {
-                    throw new DonkException("Invalid event format! Use: event <task> /from <start> /to <end>");
+                    throw new DonkException("Invalid Event format! Use: event <task> /from <start> /to <end>");
                 }
                 return new AddCommand(new Event(eventParts[0], eventParts[1], eventParts[2], false));
             case "find":
