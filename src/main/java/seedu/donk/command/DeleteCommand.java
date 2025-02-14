@@ -13,8 +13,8 @@ public class DeleteCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws DonkException {
-        tasks.deleteTask(taskIndex - 1);
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws DonkException {
         storage.saveTasks(tasks.getTasks());
+        return tasks.deleteTask(taskIndex - 1);
     }
 }

@@ -13,5 +13,5 @@ public abstract class FindCommand extends Command {
     }
 
     @Override
-    public abstract void execute(TaskList tasks, Ui ui, Storage storage) throws DonkException;
+    public abstract String execute(TaskList tasks, Ui ui, Storage storage) throws DonkException;
 }

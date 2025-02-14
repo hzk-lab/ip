@@ -36,8 +36,7 @@ public class Donk {
     public String getResponse(String input) {
         try {
             Command command = Parser.parseCommand(input);
-            command.execute(tasks, ui, storage);
-            return tasks.printTasks();
+            return command.execute(tasks, ui, storage);
         } catch (DonkException e) {
             return e.getMessage();
         }
@@ -53,7 +52,7 @@ public class Donk {
             try {
                 String input = ui.readCommand();
                 Command command = Parser.parseCommand(input);
-                command.execute(tasks, ui, storage);
+                ui.showMessage(command.execute(tasks, ui, storage));
                 if (command.isExit()) {
                     break;
                 }

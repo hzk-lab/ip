@@ -14,8 +14,8 @@ public class AddCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws DonkException {
-        tasks.addTask(task);
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws DonkException {
         storage.saveTasks(tasks.getTasks());
+        return tasks.addTask(task);
     }
 }

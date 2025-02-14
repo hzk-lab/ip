@@ -12,7 +12,7 @@ public class FindDateCommand extends FindCommand {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws DonkException {
-        tasks.findDateTasks(super.searchString);
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws DonkException {
+        return tasks.findDateTasks(super.searchString);
     }
 }

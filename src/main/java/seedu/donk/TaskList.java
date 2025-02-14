@@ -38,10 +38,10 @@ public class TaskList {
      *
      * @param task The task to add.
      */
-    public void addTask(Task task) {
+    public String addTask(Task task) {
         tasks.add(task);
-        System.out.println("Got it. I've added this task:\n  " + task);
-        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+        return "Got it. I've added this task:\n  " + task + "\n" +
+            "Now you have " + tasks.size() + " tasks in the list.";
     }
 
     /**
@@ -50,15 +50,15 @@ public class TaskList {
      * @param index The index of the task to delete (0-based).
      * @throws DonkException If the index is out of bounds.
      */
-    public void deleteTask(int index) throws DonkException{
+    public String deleteTask(int index) throws DonkException{
         Task task;
         try {
             task = tasks.remove(index);
         } catch (IndexOutOfBoundsException e) {
             throw new DonkException("Oops!!! The task you just type in to delete doesn't exist.");
         }
-        System.out.println("Noted. I've removed this task:\n  " + task);
-        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+        return ("Noted. I've removed this task:\n  " + task) + "\n"
+            + ("Now you have " + tasks.size() + " tasks in the list.");
     }
 
     /**
@@ -67,7 +67,7 @@ public class TaskList {
      * @param index The index of the task to mark as done (0-based).
      * @throws DonkException If the index is out of bounds.
      */
-    public void markTask(int index) throws DonkException {
+    public String markTask(int index) throws DonkException {
         Task task;
         try {
             task = tasks.get(index);
@@ -76,7 +76,7 @@ public class TaskList {
             throw new DonkException("Oops!!! The task you just type in to mark as done doesn't exist.");
         }
 
-        System.out.println("Nice! I've marked this task as done:\n" + "        " + task);
+        return ("Nice! I've marked this task as done:\n" + "        " + task);
     }
 
     /**
@@ -85,7 +85,7 @@ public class TaskList {
      * @param index The index of the task to unmark (0-based).
      * @throws DonkException If the index is out of bounds.
      */
-    public void unMarkTask(int index) throws DonkException {
+    public String unMarkTask(int index) throws DonkException {
         Task task;
         try {
             task = tasks.get(index);
@@ -94,7 +94,7 @@ public class TaskList {
             throw new DonkException("Oops!!! The task you just type in to mark as undone doesn't exist.");
         }
 
-        System.out.println("OK, I've marked this task as not done yet:\n" + "        " + task);
+        return ("OK, I've marked this task as not done yet:\n" + "        " + task);
     }
 
 
@@ -106,13 +106,10 @@ public class TaskList {
         String result = "";
         if (tasks.isEmpty()) {
             result += "Your task list is empty!\n";
-            System.out.println("Your task list is empty!");
         } else {
             result += "Here are your tasks:\n";
-            System.out.println("Here are your tasks:");
             for (int i = 0; i < tasks.size(); i++) {
                 result += (i + 1) + ". " + tasks.get(i) + "\n";
-                System.out.println((i + 1) + ". " + tasks.get(i));
             }
         }
 
@@ -131,21 +128,24 @@ public class TaskList {
      * @param dateString The date string in {@code YYYY-MM-DD} format.
      */
 
-    public void findDateTasks(String dateString) throws DonkException{
+    public String findDateTasks(String dateString) throws DonkException{
+        String result = "";
         try {
             LocalDate searchDate = LocalDate.parse(dateString);
             List<Task> results = findTasksByDate(tasks, searchDate);
             if (results.isEmpty()) {
-                System.out.println("No tasks found on " + searchDate);
+                result += ("No tasks found on " + searchDate) + "\n";
             } else {
-                System.out.println("Here are the tasks on " + searchDate + ":");
+                result += "Here are the tasks on " + searchDate + ":" + "\n";
                 for (int i = 0; i < results.size(); i++) {
-                    System.out.println((i + 1) + ". " + results.get(i));
+                    result += ((i + 1) + ". " + results.get(i)) + "\n";
                 }
             }
         } catch (DateTimeParseException e) {
             throw new DonkException("Oops!!! Invalid date format! Use YYYY-MM-DD.");
         }
+
+        return result;
     }
 
 
@@ -154,20 +154,23 @@ public class TaskList {
      *
      * @param nameString The name String to search with.
      */
-    public void findNameTasks(String nameString) {
+    public String  findNameTasks(String nameString) {
+        String result = "";
         try {
             List<Task> results = findTasksByName(tasks, nameString);
             if (results.isEmpty()) {
-                System.out.println("No tasks found with the word " + nameString);
+                result += ("No tasks found with the word " + nameString) + "\n";
             } else {
-                System.out.println("Here are the tasks containing " + nameString + ":");
+                result += ("Here are the tasks containing " + nameString + ":") + "\n";
                 for (int i = 0; i < results.size(); i++) {
-                    System.out.println((i + 1) + ". " + results.get(i));
+                    result += ((i + 1) + ". " + results.get(i)) + "\n";
                 }
             }
         } catch (DateTimeParseException e) {
-            System.out.println("Oops!!! Invalid date format! Use YYYY-MM-DD.");
+            result += ("Oops!!! Invalid date format! Use YYYY-MM-DD.") + "\n";
         }
+
+        return result;
     }
 
     /**

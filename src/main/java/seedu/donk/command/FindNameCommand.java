@@ -12,7 +12,7 @@ public class FindNameCommand extends FindCommand {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws DonkException {
-        tasks.findNameTasks(super.searchString);
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws DonkException {
+        return tasks.findNameTasks(super.searchString);
     }
 }

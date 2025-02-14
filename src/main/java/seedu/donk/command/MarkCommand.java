@@ -13,8 +13,9 @@ public class MarkCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws DonkException {
-        tasks.markTask(taskIndex - 1);
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws DonkException {
+        String result = tasks.markTask(taskIndex - 1);
         storage.saveTasks(tasks.getTasks());
+        return result;
     }
 }
