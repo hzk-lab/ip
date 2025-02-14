@@ -53,7 +53,7 @@ public class TaskList {
     public void deleteTask(int index) throws DonkException{
         Task task;
         try {
-            task = tasks.remove(index);
+            task = tasks.remove(index - 1);
         } catch (IndexOutOfBoundsException e) {
             throw new DonkException("Oops!!! The task you just type in to delete doesn't exist.");
         }

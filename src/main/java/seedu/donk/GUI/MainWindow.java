@@ -25,7 +25,7 @@ public class MainWindow extends AnchorPane {
     private Donk donk;
 
     private Image userImage = new Image(this.getClass().getResourceAsStream("/seedu/donk/images/ak47.png"));
-    private Image dukeImage = new Image(this.getClass().getResourceAsStream("/seedu/donk/images/m4a1.png"));
+    private Image donkImage = new Image(this.getClass().getResourceAsStream("/seedu/donk/images/m4a1.png"));
 
 
     @FXML
@@ -42,7 +42,7 @@ public class MainWindow extends AnchorPane {
     }
 
 
-    public void setDuke(Donk d) {
+    public void setDonk(Donk d) {
         donk = d;
     }
 
@@ -56,8 +56,9 @@ public class MainWindow extends AnchorPane {
         String response = donk.getResponse(input);
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDonkDialog(response, dukeImage)
+                DialogBox.getDonkDialog(response, donkImage)
         );
         userInput.clear();
+
     }
 }
