@@ -42,7 +42,7 @@ javafx {
 
 
 application {
-    mainClass = 'seedu.donk.GUI.Main'
+    mainClass = 'seedu.donk.GUI.Launcher'
 }
 
 shadowJar {
