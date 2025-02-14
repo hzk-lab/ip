@@ -28,6 +28,22 @@ public class Donk {
     }
 
     /**
+     * Generates a response for user input.
+     *
+     * @param input The user input command.
+     * @return The chatbot's response message.
+     */
+    public String getResponse(String input) {
+        try {
+            Command command = Parser.parseCommand(input);
+            command.execute(tasks, ui, storage);
+            return tasks.printTasks();
+        } catch (DonkException e) {
+            return e.getMessage();
+        }
+    }
+
+    /**
      * Runs the chatbot by continuously reading user input and executing commands.
      * The loop terminates when an exit command is issued.
      */

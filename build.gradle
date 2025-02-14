@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
@@ -9,9 +10,14 @@ repositories {
 }
 
 dependencies {
-    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.10.0'
-    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.10.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.0'
     testImplementation 'org.assertj:assertj-core:3.24.2'
+
+}
+
+tasks.named('processResources') {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
 test {
@@ -28,8 +34,15 @@ test {
     }
 }
 
+javafx {
+    version = "17.0.7"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+
+
 application {
-    mainClass.set("seedu.donk.Donk")
+    mainClass = 'seedu.donk.GUI.Main'
 }
 
 shadowJar {
@@ -39,4 +52,8 @@ shadowJar {
 
 run{
     standardInput = System.in
+}
+
+processResources {
+    from("src/main/resources")
 }

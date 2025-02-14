@@ -5,7 +5,12 @@ import seedu.donk.task.Event;
 import seedu.donk.task.Task;
 import seedu.donk.task.ToDo;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -102,15 +102,21 @@ public class TaskList {
      * Prints all tasks in the task list.
      * If the list is empty, prints a message indicating so.
      */
-    public void printTasks() {
+    public String printTasks() {
+        String result = "";
         if (tasks.isEmpty()) {
+            result += "Your task list is empty!\n";
             System.out.println("Your task list is empty!");
         } else {
+            result += "Here are your tasks:\n";
             System.out.println("Here are your tasks:");
             for (int i = 0; i < tasks.size(); i++) {
+                result += (i + 1) + ". " + tasks.get(i) + "\n";
                 System.out.println((i + 1) + ". " + tasks.get(i));
             }
         }
+
+        return result;
     }
 
     public List<Task> getTasks() {
