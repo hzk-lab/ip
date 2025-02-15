@@ -1,4 +1,4 @@
-package seedu.donk.GUI;
+package seedu.donk.gui;
 
 import java.io.IOException;
 import java.util.Collections;

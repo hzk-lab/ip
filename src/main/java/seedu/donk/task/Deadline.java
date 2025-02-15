@@ -1,7 +1,7 @@
 package seedu.donk.task;
 
 import seedu.donk.DonkException;
-import seedu.donk.parseDate;
+import seedu.donk.ParseDate;
 
 /**
  * Represents a deadline task in the task list.
@@ -28,7 +28,7 @@ public class Deadline extends Task {
         if (by == null || by.trim().isEmpty())
             throw new DonkException("Oops!!! Your Deadline task must have a due time.");
 
-        processedBy = parseDate.parseDateOrReturnOriginal(by);
+        processedBy = ParseDate.parseDateOrReturnOriginal(by);
     }
 
     /**

@@ -64,8 +64,8 @@ public class Donk {
     }
 
     /**
-     * The main entry point of the application.
-     * Creates a new Donk instance and starts the chatbot.
+     * Executes the main logic of the Donk chatbot.
+     * Initializes a new Donk instance and starts the chatbot interface.
      *
      * @param args Command-line arguments (not used).
      */

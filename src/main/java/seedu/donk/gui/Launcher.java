@@ -1,4 +1,4 @@
-package seedu.donk.GUI;
+package seedu.donk.gui;
 
 import javafx.application.Application;
 
