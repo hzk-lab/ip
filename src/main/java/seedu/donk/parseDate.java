@@ -22,6 +22,7 @@ public class parseDate {
     public static String parseDateOrReturnOriginal(String by) {
         try {
             // System.out.println("z");
+            assert by != null : "Date string should not be null";
             LocalDate date = LocalDate.parse(by);
             return date.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
         } catch (DateTimeParseException e) {
