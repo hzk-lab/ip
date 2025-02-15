@@ -95,7 +95,6 @@ public class Storage {
         try {
             String[] parts = line.split(" \\| ");
             if (parts.length < 3) return null; // Ensure correct format
-            // System.out.println("x");
             String type = parts[0].trim();
             boolean isDone = parts[1].trim().equals("1");
             String name = parts[2].trim();

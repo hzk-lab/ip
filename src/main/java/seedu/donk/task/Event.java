@@ -1,7 +1,7 @@
 package seedu.donk.task;
 
 import seedu.donk.DonkException;
-import seedu.donk.parseDate;
+import seedu.donk.ParseDate;
 
 import java.time.LocalDate;
 
@@ -40,12 +40,12 @@ public class Event extends Task {
         if (end == null || end.trim().isEmpty())
             throw new DonkException("Oops!!! Your Event task must have a end time.");
 
-        if (!parseDate.judgeStartAndEnd(start, end)) {
+        if (!ParseDate.judgeStartAndEnd(start, end)) {
             throw new DonkException("Oops!!! Your event end time is earlier than its start time.");
         }
 
-        processedStart = parseDate.parseDateOrReturnOriginal(start);
-        processedEnd = parseDate.parseDateOrReturnOriginal(end);
+        processedStart = ParseDate.parseDateOrReturnOriginal(start);
+        processedEnd = ParseDate.parseDateOrReturnOriginal(end);
     }
 
     /**

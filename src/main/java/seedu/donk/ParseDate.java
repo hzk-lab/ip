@@ -9,7 +9,7 @@ import java.time.format.DateTimeParseException;
  * It provides methods for converting date strings into a standard format
  * and validating the chronological order of start and end dates.
  */
-public class parseDate {
+public class ParseDate {
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE;
 
     /**
@@ -21,7 +21,6 @@ public class parseDate {
      */
     public static String parseDateOrReturnOriginal(String by) {
         try {
-            // System.out.println("z");
             assert by != null : "Date string should not be null";
             LocalDate date = LocalDate.parse(by);
             return date.format(DateTimeFormatter.ofPattern("MMM d yyyy"));

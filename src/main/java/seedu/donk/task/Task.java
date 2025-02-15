@@ -8,17 +8,17 @@ import seedu.donk.DonkException;
  */
 public abstract class Task {
     private String name;
-    private boolean status;
+    private boolean isDone;
 
     /**
      * Constructs a {@code Task} with the given name and status.
      *
      * @param name   The name or description of the task.
-     * @param status The completion status of the task.
+     * @param isDone The completion status of the task.
      */
-    public Task(String name, boolean status) {
+    public Task(String name, boolean isDone) {
         this.name = name;
-        this.status = status;
+        this.isDone = isDone;
     }
 
     public String getName() {
@@ -26,7 +26,7 @@ public abstract class Task {
     }
 
     public boolean getStatus() {
-        return this.status;
+        return this.isDone;
     }
 
     /**
@@ -35,10 +35,10 @@ public abstract class Task {
      * @throws DonkException If the task is already marked as done.
      */
     public void markAsDone() throws DonkException {
-        if (this.status) {
+        if (this.isDone) {
             throw new DonkException("Oops!!! This task has already been done by you.");
         }
-        this.status = true;
+        this.isDone = true;
     }
 
     /**
@@ -47,10 +47,10 @@ public abstract class Task {
      * @throws DonkException If the task was already not completed.
      */
     public void markAsUndone() throws DonkException {
-        if (!this.status) {
+        if (!this.isDone) {
             throw new DonkException("Oops!!! This task has not been done before.");
         }
-        this.status = false;
+        this.isDone = false;
     }
 
 
@@ -62,7 +62,7 @@ public abstract class Task {
      */
     @Override
     public String toString() {
-        if (this.status) {
+        if (this.isDone) {
             return "[X] " + this.name;
         } else {
             return "[ ] " + this.name;

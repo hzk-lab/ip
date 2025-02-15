@@ -40,6 +40,10 @@ javafx {
 }
 
 
+run {
+    enableAssertions = true
+}
+
 
 application {
     mainClass = 'seedu.donk.GUI.Launcher'
