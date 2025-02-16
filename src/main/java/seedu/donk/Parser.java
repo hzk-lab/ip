@@ -76,6 +76,8 @@ public class Parser {
                     throw new DonkException("Invalid Find format! You must type in the name of the task.");
                 }
                 return new FindNameCommand(words[1]);
+            case "sort":
+                return new SortCommand();
             default:
                 return new InvalidCommand();
         }

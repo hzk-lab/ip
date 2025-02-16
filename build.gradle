@@ -46,7 +46,7 @@ run {
 
 
 application {
-    mainClass = 'seedu.donk.GUI.Launcher'
+    mainClass = 'seedu.donk.gui.Launcher'
 }
 
 shadowJar {

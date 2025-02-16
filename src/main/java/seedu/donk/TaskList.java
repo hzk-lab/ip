@@ -6,6 +6,7 @@ import seedu.donk.task.Task;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
@@ -16,6 +17,7 @@ import java.time.format.DateTimeParseException;
 public class TaskList {
 
     private final List<Task> tasks;
+
 
     /**
      * Constructs an empty {@code TaskList}.
@@ -120,8 +122,6 @@ public class TaskList {
         return tasks;
     }
 
-
-
     /**
      * Finds tasks occurring on a specific date and prints them.
      *
@@ -154,7 +154,7 @@ public class TaskList {
      *
      * @param nameString The name String to search with.
      */
-    public String  findNameTasks(String nameString) {
+    public String findNameTasks(String nameString) {
         String result = "";
         try {
             List<Task> results = findTasksByName(tasks, nameString);
@@ -214,6 +214,57 @@ public class TaskList {
         }
 
         return matchingTasks;
+    }
+
+    public String sortTasksByTime() {
+
+        if (tasks.isEmpty()) {
+            return ("There are no tasks.");
+        }
+
+        StringBuilder result = new StringBuilder();
+
+        PriorityQueue<Task> priorityQueue = new PriorityQueue<>((task1, task2) -> {
+
+            LocalDate time1 = extractTime(task1);
+            LocalDate time2 = extractTime(task2);
+
+            if (time1 == null && time2 == null) return 0; // If both don't have time, keep order
+            if (time1 == null) return 1; // Task without time goes last
+            if (time2 == null) return -1; // Task without time goes last
+
+            if (time1.isBefore(time2)) return -1;
+            else return 1;
+        });
+
+        priorityQueue.addAll(tasks);
+
+        int index = 1;
+        while (!priorityQueue.isEmpty()) {
+            result.append(index).append(". ").append(priorityQueue.poll()).append("\n");
+            index++;
+        }
+
+        return result.toString();
+    }
+
+    /**
+     * Extracts the relevant LocalDateTime from a Task.
+     */
+    private LocalDate extractTime(Task task) {
+        try {
+            if (task instanceof Deadline) {
+                return LocalDate.parse(((Deadline) task).getBy());
+            }
+
+            if (task instanceof Event) {
+                return LocalDate.parse(((Event) task).getStart());
+            }
+
+            return null; // Non-time-based tasks (like ToDo)
+        } catch (DateTimeParseException e) {
+            return null;
+        }
     }
 
 }
