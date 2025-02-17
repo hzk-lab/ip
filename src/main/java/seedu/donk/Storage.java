@@ -73,6 +73,7 @@ public class Storage {
      */
     public void saveTasks(List<Task> tasks) {
         File file = new File(filePath);
+
         file.getParentFile().mkdirs(); // Ensure directory exists
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
