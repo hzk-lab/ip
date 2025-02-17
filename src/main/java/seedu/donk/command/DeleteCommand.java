@@ -14,8 +14,8 @@ public class DeleteCommand extends Command {
 
     @Override
     public String execute(TaskList tasks, Ui ui, Storage storage) throws DonkException {
+        String result = tasks.deleteTask(taskIndex - 1);
         storage.saveTasks(tasks.getTasks());
-        storage.saveTasks(tasks.getTasks());
-        return tasks.deleteTask(taskIndex - 1);
+        return result;
     }
 }
