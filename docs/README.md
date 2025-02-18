@@ -157,7 +157,6 @@ Here are your tasks sorted by time:
 2. [E][ ] Attend Meeting (from: 2025-02-22 to: 2025-02-23)
 ```
 
-
 ---
 
 This **fully integrated User Guide** covers:
