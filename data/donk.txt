@@ -1,4 +1,3 @@
-T | 1 | hahahaha
-D | 1 | do | 2020-10-11
-D | 0 | do | 2025-01-01
-D | 0 | dp | 2023-01-01
+T | 0 | Read JavaFX Tutorial
+D | 1 | Submit CS2103T Report | 2025-02-20
+E | 0 | Attend Meeting | 2025-02-22 | 2025-02-23
