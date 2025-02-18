@@ -1,6 +1,7 @@
 # 📖 Donk User Guide
 
-![Product Screenshot](path/to/screenshot.png)  
+![Ui.png](Ui.png)
+
 *Your intelligent chatbot for managing tasks effortlessly.*
 
 ---
@@ -139,6 +140,21 @@ get 2025-02-20
 ```sh
 Here are the tasks on 2025-02-20:
 [D][X] Submit CS2103T Report (by: 20 Feb 2025)
+```
+
+### 🔄  **9. Sorting Tasks by Time**
+Sorts all deadlines and events from earliest to latest.
+
+☑️Example:
+```sh
+sort
+```
+
+☑️Example Output:
+```sh
+Here are your tasks sorted by time:
+1. [D][ ] Submit CS2103T Report (by: 2025-02-20)
+2. [E][ ] Attend Meeting (from: 2025-02-22 to: 2025-02-23)
 ```
 
 
