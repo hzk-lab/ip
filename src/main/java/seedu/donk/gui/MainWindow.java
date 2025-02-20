@@ -32,6 +32,8 @@ public class MainWindow extends AnchorPane {
     public void initialize() {
         dialogContainer.heightProperty().addListener((observable) -> scrollPane.setVvalue(1.0));
 
+        showWelcomeMessage();
+
         sendButton.setOnMouseClicked((event) -> {
             handleUserInput();
         });
@@ -58,7 +60,24 @@ public class MainWindow extends AnchorPane {
                 DialogBox.getUserDialog(input, userImage),
                 DialogBox.getDonkDialog(response, donkImage)
         );
-        userInput.clear();
 
+        if (input.equals("bye")) {
+            // Close the window after 2 second
+            new java.util.Timer().schedule(
+                    new java.util.TimerTask() {
+                        @Override
+                        public void run() {
+                            System.exit(0);
+                        }
+                    },
+                    1000
+            );
+        }
+        userInput.clear();
+    }
+
+    private void showWelcomeMessage() {
+        String welcomeMessage = "Hello! I'm Donk 🤖\nWhat can I do for you today?";
+        dialogContainer.getChildren().add(DialogBox.getDonkDialog(welcomeMessage, donkImage));
     }
 }
