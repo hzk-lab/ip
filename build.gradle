@@ -1,19 +1,18 @@
 plugins {
     id 'java'
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.13'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
+
 }
+
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.10.0'
     testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.10.0'
-
     String javaFxVersion = '17.0.7'
 
     implementation group: 'org.openjfx', name: 'javafx-base', version: javaFxVersion, classifier: 'win'
@@ -28,11 +27,6 @@ dependencies {
     implementation group: 'org.openjfx', name: 'javafx-graphics', version: javaFxVersion, classifier: 'win'
     implementation group: 'org.openjfx', name: 'javafx-graphics', version: javaFxVersion, classifier: 'mac'
     implementation group: 'org.openjfx', name: 'javafx-graphics', version: javaFxVersion, classifier: 'linux'
-
-}
-
-tasks.named('processResources') {
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
 test {
@@ -49,38 +43,18 @@ test {
     }
 }
 
-javafx {
-    version = "17"
-    modules = [ 'javafx.controls', 'javafx.fxml' ]
-}
-
-
-run {
-    enableAssertions = true
-}
-
-
 application {
     mainClass = 'seedu.donk.gui.Launcher'
-    applicationDefaultJvmArgs = ["-Duser.dir=/Users/zekaihuang/Desktop/CS2103T/ip/./data/donk.txt"]
 }
 
 shadowJar {
     archiveBaseName = "donk"
     archiveClassifier = null
-}
-
-sourceSets {
-    main {
-        java.srcDirs = ['src/main/java']
-        resources.srcDirs = ['src/main/resources']
+    manifest {
+        attributes "Main-Class": "donk.Donk"
     }
 }
 
 run{
     standardInput = System.in
-}
-
-processResources {
-    from("src/main/resources")
 }

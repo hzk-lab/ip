@@ -5,7 +5,7 @@ import seedu.donk.task.ToDo;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ToDoTest {
+class TodoTest {
 
     @Test
     void constructor_validName_success() throws DonkException {
