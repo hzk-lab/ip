@@ -1,3 +1,9 @@
 T | 0 | Read JavaFX Tutorial
 D | 1 | Submit CS2103T Report | 2025-02-20
 E | 0 | Attend Meeting | 2025-02-22 | 2025-02-23
+E | 0 | Attend Meeting | 2025-02-22 | 2025-02-23 1903
+E | 0 | Attend Meeting | 2025-02-22 | 2025-02-23 1
+E | 0 | Attend Meeting | 2025-02-22 | 2025-02-23
+E | 0 | Attend Meeting | 2025-02-22 | 2025-02-23
+E | 0 | Attend Meeting | 2025-02-22 | 2025-02-23 1903
+E | 0 | Attend Meeting | 2025-02-22 | 2025-02-23

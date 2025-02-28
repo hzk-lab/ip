@@ -56,9 +56,6 @@ public class Event extends Task {
      */
     @Override
     public String toString() {
-        LocalDate d1 = LocalDate.parse(start);
-        LocalDate d2 = LocalDate.parse(end);
-
         return "[E]" + super.toString() + " (from: " + processedStart + " to: " + processedEnd + ")";
     }
 
